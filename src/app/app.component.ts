@@ -7,13 +7,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  public currentSpeed: number;
+  public calories: number;
 
   ngOnInit(): void {
-    COBI.init('token');
-    setTimeout(() => {
-      COBI.rideService.speed.subscribe(speed => this.currentSpeed = speed);
-    }, 2000)
+  }
 
+  public displayCalories(): void {
+    COBI.tourService.calories.subscribe(calories => {
+      console.warn('Calories: ' + calories);
+      this.calories = calories;
+    });
   }
 }
